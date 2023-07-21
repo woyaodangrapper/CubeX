@@ -7,19 +7,22 @@
 [![Contributors][contributors-shield]][contributors-url] [![Forks][forks-shield]][forks-url] [![Stargazers][stars-shield]][stars-url] [![Issues][issues-shield]][issues-url] [![MIT License][license-shield]][license-url]
 
 <!-- PROJECT LOGO -->
+
+  <p align="center">
+      简体中文 |
+      <a href="https://github.com/woyaodangrapper/CubeX/docs/README_EN.md">English</a>
+    </p>
+
 <br />
 
 <p align="center">
   <a href="https://github.com/woyaodangrapper/CubeX/">
-    <img src="docs/images/logo.svg" alt="Logo" height="50%"  width="50%">
+    <img src="/docs/images/logo.svg" alt="Logo" height="50%" width="80%">
   </a>
   <p align="center">
    CubeX 是基于 WinUI 3 的 Minecraft: Java Edition 启动器
     <br />
-    <p align="center">
-      简体中文 |
-      <a href="https://github.com/woyaodangrapper/CubeX/docs/README_EN.md">English</a>
-    </p>
+  
 </p>
 
 <div  align="center">
