@@ -1,0 +1,28 @@
+﻿<Project>
+	<Import Project="version.props" />
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<LangVersion>preview</LangVersion>
+		<Nullable>enable</Nullable>
+		<TieredPGO>true</TieredPGO>
+		<!--<RuntimeIdentifiers>win-x86;win-x64;linux-x64;osx-x64</RuntimeIdentifiers>-->
+		<!--<WarningsAsErrors>nullable</WarningsAsErrors>-->
+		<ServerGarbageCollection>true</ServerGarbageCollection>
+		<ConcurrentGarbageCollection>true</ConcurrentGarbageCollection>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<EnableUnsafeBinaryFormatterSerialization>true</EnableUnsafeBinaryFormatterSerialization>
+		<Authors></Authors>
+		<Product>CubeX</Product>
+		<PackagePrefix>CubeX</PackagePrefix>
+		<PackageIcon>../docs/images/logo.svg</PackageIcon>
+		<RepositoryUrl>https://github.com/woyaodangrapper/CubeX</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/woyaodangrapper/CubeX</PackageProjectUrl>
+		<RepositoryType>git</RepositoryType>
+		<SatelliteResourceLanguages>zh-Hans</SatelliteResourceLanguages>
+		<SatelliteResourceLanguages>zh-Hant</SatelliteResourceLanguages>
+		<SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+		<NoWarn>$(NoWarn);1591;0436</NoWarn>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
+	</PropertyGroup>
+</Project>
