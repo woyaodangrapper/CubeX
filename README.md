@@ -17,7 +17,7 @@
 
 <p align="center">
   <a href="https://github.com/woyaodangrapper/CubeX/">
-    <img src="/docs/images/logo.svg" alt="Logo" height="50%" width="80%">
+    <img src="/docs/images/logo.svg" alt="Logo" height="50%" width="50%">
   </a>
   <p align="center">
    CubeX 是基于 WinUI 3 的 Minecraft: Java Edition 启动器
