@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace Natsurainko.FluentLauncher.ViewModels.Settings;
 
-partial class AppearanceViewModel : SettingsViewModelBase, ISettingsViewModel
+internal partial class AppearanceViewModel : SettingsViewModelBase, ISettingsViewModel
 {
     [SettingsProvider]
     private readonly SettingsService _settingsService;
@@ -41,7 +41,7 @@ partial class AppearanceViewModel : SettingsViewModelBase, ISettingsViewModel
 
     private void AppearanceViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
     {
-        if (e.PropertyName == nameof(CurrentLanguage))
-            LanguageResources.ApplyLanguage(CurrentLanguage);
+        //if (e.PropertyName == nameof(CurrentLanguage))
+        //LanguageResources.ApplyLanguage(CurrentLanguage);
     }
 }

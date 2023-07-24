@@ -1,12 +1,11 @@
 ﻿<Project>
 	<Import Project="version.props" />
 	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
+		<TargetFramework>net7.0-windows10.0.19041.0</TargetFramework>
 		<LangVersion>preview</LangVersion>
 		<Nullable>enable</Nullable>
+		<PublishAot>true</PublishAot>
 		<TieredPGO>true</TieredPGO>
-		<!--<RuntimeIdentifiers>win-x86;win-x64;linux-x64;osx-x64</RuntimeIdentifiers>-->
-		<!--<WarningsAsErrors>nullable</WarningsAsErrors>-->
 		<ServerGarbageCollection>true</ServerGarbageCollection>
 		<ConcurrentGarbageCollection>true</ConcurrentGarbageCollection>
 		<ImplicitUsings>enable</ImplicitUsings>
