@@ -1,0 +1,10 @@
+{
+  "profiles": {
+	"XLaunch.Windows (Package)": {
+	  "commandName": "MsixPackage"
+	},
+	"XLaunch.Windows (Unpackaged)": {
+	  "commandName": "Project"
+	}
+  }
+}
