@@ -1,13 +1,16 @@
 ﻿using AppSettingsManagement.Mvvm;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Messaging;
 using Natsurainko.FluentLauncher.Components;
+using Natsurainko.FluentLauncher.Models;
 using Natsurainko.FluentLauncher.Services.Settings;
 using Natsurainko.FluentLauncher.ViewModels.Common;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Natsurainko.FluentLauncher.ViewModels.OOBE;
 
-internal partial class LanguageViewModel : SettingsViewModelBase, ISettingsViewModel
+partial class LanguageViewModel : SettingsViewModelBase, ISettingsViewModel
 {
     #region Settings
 
@@ -18,7 +21,7 @@ internal partial class LanguageViewModel : SettingsViewModelBase, ISettingsViewM
     [BindToSetting(Path = nameof(SettingsService.CurrentLanguage))]
     private string currentLanguage;
 
-    #endregion Settings
+    #endregion
 
     public List<string> Languages => LanguageResources.SupportedLanguages;
 
@@ -31,17 +34,18 @@ internal partial class LanguageViewModel : SettingsViewModelBase, ISettingsViewM
         _isLoading = false;
     }
 
-    //private partial void OnCurrentLanguageChanged(string oldValue, string newValue)
-    //{
-    //    bool isValid = LanguageResources.SupportedLanguages.Contains(CurrentLanguage);
-    //    WeakReferenceMessenger.Default.Send(new GuideNavigationMessage()
-    //    {
-    //        CanNext = isValid,
-    //        NextPage = typeof(Views.OOBE.BasicPage)
-    //    });
-    //    if (isValid && !_isLoading)
-    //    {
-    //        LanguageResources.ApplyLanguage(CurrentLanguage);
-    //    }
-    //}
+    partial void OnCurrentLanguageChanged(string oldValue, string newValue)
+    {
+        bool isValid = LanguageResources.SupportedLanguages.Contains(CurrentLanguage);
+        WeakReferenceMessenger.Default.Send(new GuideNavigationMessage()
+        {
+            CanNext = isValid,
+            NextPage = typeof(Views.OOBE.BasicPage)
+        });
+        if (isValid && !_isLoading)
+        {
+            LanguageResources.ApplyLanguage(CurrentLanguage);
+        }
+    }
+
 }

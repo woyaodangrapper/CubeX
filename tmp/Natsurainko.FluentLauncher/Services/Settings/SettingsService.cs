@@ -1,18 +1,13 @@
 ﻿using AppSettingsManagement;
 using AppSettingsManagement.Converters;
-using Natsurainko.FluentCore.Interface;
-using Natsurainko.FluentCore.Model.Auth;
 using Natsurainko.FluentLauncher.Services.Storage;
 using Natsurainko.FluentLauncher.Utils;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using System.Threading.Tasks;
 using Windows.Storage;
 
 namespace Natsurainko.FluentLauncher.Services.Settings;
@@ -30,7 +25,6 @@ public partial class SettingsService : SettingsContainer
 
     //[SettingItem(typeof(IAccount), "CurrentAccount", Converter = typeof(AccountToJsonConverter))] // TODO: Remove this
     [SettingItem(typeof(Guid), "ActiveAccountUuid")]
-
     [SettingItem(typeof(string), "CurrentGameCore", Default = "", Converter = typeof(JsonStringConverter<string>))]
     [SettingItem(typeof(string), "CurrentGameFolder", Default = "", Converter = typeof(JsonStringConverter<string>))]
     [SettingItem(typeof(string), "CurrentJavaRuntime", Default = "", Converter = typeof(JsonStringConverter<string>))]
@@ -55,11 +49,9 @@ public partial class SettingsService : SettingsContainer
     [SettingItem(typeof(string), "CoresSortBy", Default = "Name", Converter = typeof(JsonStringConverter<string>))]
     [SettingItem(typeof(string), "CoresFilter", Default = "All", Converter = typeof(JsonStringConverter<string>))]
     [SettingItem(typeof(uint), "SettingsVersion", Default = 0u)]
-
     [SettingItem(typeof(int), "NavigationViewDisplayMode", Default = 0, Converter = typeof(JsonStringConverter<int>))]
     [SettingItem(typeof(int), "DisplayTheme", Default = 0, Converter = typeof(JsonStringConverter<int>))]
     [SettingItem(typeof(bool), "UseNewHomePage", Default = false, Converter = typeof(JsonStringConverter<bool>))]
-
     public SettingsService(ISettingsStorage storage) : base(storage)
     {
         var appsettings = ApplicationData.Current.LocalSettings;
