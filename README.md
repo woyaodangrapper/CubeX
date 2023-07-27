@@ -17,7 +17,7 @@
 
 <p align="center">
   <a href="https://github.com/woyaodangrapper/CubeX/">
-    <img src="/docs/images/logo.svg" alt="Logo" height="50%" width="50%">
+    <img src="/docs/images/minecraft-iphone-wallpaper.webp" alt="Logo" height="50%" width="100%">
   </a>
   <p align="center">
    CubeX 是基于 WinUI 3 的 Minecraft: Java Edition 启动器
@@ -47,7 +47,7 @@
 
 ## **安装下载**
 
-> #### 在 [tags](https://github.com/Xcube-Studio/Natsurainko.FluentLauncher/tags) 下载启动后点击设置对启动器进行初步的配置 如游戏目录的选取 Java 运行时的添加 游戏帐户的添加
+> #### 在 [tags](https://github.com/woyaodangrapper/CubeX/tags) 下载启动后点击设置对启动器进行初步的配置 如游戏目录的选取 Java 运行时的添加 游戏帐户的添加
 
 ### 运行前的配置要求
 
