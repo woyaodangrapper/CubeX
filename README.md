@@ -1,6 +1,10 @@
-# CubeX
+<p align="center">
+  <a href="https://github.com/woyaodangrapper/CubeX/">
+    <img src="/docs/images/minecraft-iphone-wallpaper.webp" alt="Logo" height="50%" width="100%">
+  </a>
+</p>
 
-## 本项目是 [Natsurainko.FluentLauncher](https://github.com/Xcube-Studio/Natsurainko.FluentLauncher) 的分叉，具体使用请移动至主项目
+**CubeX** is a forked design based on **Fluent Launcher**. I have redesigned and refactored the design and code for this project. The goal of this project is to serve as a game launcher for **Mojang's Minecraft**.
 
 <!-- PROJECT SHIELDS -->
 
@@ -8,66 +12,49 @@
 
 <!-- PROJECT LOGO -->
 
-  <p align="center">
-      简体中文 |
-      <a href="https://github.com/woyaodangrapper/CubeX/docs/README_EN.md">English</a>
-    </p>
-
-<br />
-
 <p align="center">
-  <a href="https://github.com/woyaodangrapper/CubeX/">
-    <img src="/docs/images/minecraft-iphone-wallpaper.webp" alt="Logo" height="50%" width="100%">
-  </a>
-  <p align="center">
-   CubeX 是基于 WinUI 3 的 Minecraft: Java Edition 启动器
-    <br />
-  
+   <a href="https://github.com/woyaodangrapper/CubeX/docs/README_CN.md">简体中文</a> |
+ English
 </p>
 
 <div  align="center">
 
----
-
-[**开发文档**](https://github.com/woyaodangrapper/CubeX/issues) :earth_asia:[**报告Bug**](https://github.com/woyaodangrapper/CubeX/issues) :earth_asia:[**查看发行版**](https://github.com/woyaodangrapper/CubeX/releases) :earth_asia:[**提出新特性**](https://github.com/woyaodangrapper/CubeX/issues) :earth_asia:
-
----
+[**Developer Documentation**](https://github.com/woyaodangrapper/CubeX/issues) :earth_asia: [**Report Bug**](https://github.com/woyaodangrapper/CubeX/issues) :earth_asia: [**View Releases**](https://github.com/woyaodangrapper/CubeX/releases) :earth_asia: [**Propose New Features**](https://github.com/woyaodangrapper/CubeX/issues) :earth_asia:
 
 </div>
-## 目录
 
-- [CubeX](#cubex)
-  - [本项目是 Natsurainko.FluentLauncher 的分叉，具体使用请移动至主项目](#本项目是-natsurainkofluentlauncher-的分叉具体使用请移动至主项目)
-  - [目录](#目录)
-  - [**安装下载**](#安装下载)
-    - [运行前的配置要求](#运行前的配置要求)
-  - [贡献者](#贡献者)
-  - [作者](#作者)
-  - [版权说明](#版权说明)
+## **Download Ready-To-Use Build**
 
-## **安装下载**
+[<img src="https://user-images.githubusercontent.com/30566970/172445052-b0e62327-1d2e-4663-bc0f-af50c7f23615.svg" width="320"/>](https://github.com/woyaodangrapper/CubeX/releases/download/)
+> **Note**: The version of this version is "v1.1" (be released on August 09, 2023).
 
-> #### 在 [tags](https://github.com/woyaodangrapper/CubeX/tags) 下载启动后点击设置对启动器进行初步的配置 如游戏目录的选取 Java 运行时的添加 游戏帐户的添加
+[<img src="https://user-images.githubusercontent.com/30566970/172445153-d098de0d-1236-4124-8e13-05000b374eb6.svg" width="320"/>](https://github.com/woyaodangrapper/CubeX/releases/download/)
+> **Note**: The version for this build is `v1.0` (be released on: August 08, 2023).
 
-### 运行前的配置要求
+To view all releases, [**click here**](https://github.com/woyaodangrapper/CubeX/releases).
 
-> Windows 10.0.19041.0 及以上系统版本。
+# System Requirements for Ready-to-use build
 
-## 贡献者
+- OS: **Windows 10 1809 Update (build 17763)** or later / **Windows 11 (Any builds)**
+- Architecture: **x64/AMD64**
+- Internet Access: **Yes**
 
-查看更多关于这个项目的贡献者，请阅读 [contributors](https://github.com/woyaodangrapper/CubeX/graphs/contributors)
-*贡献不分先后，均为此项目的共同推动者*
+# Third-party repositories and libraries used in this project
 
-## 作者
+- [**Windows UI Library**](https://github.com/microsoft/microsoft-ui-xaml) by Microsoft
+- [**Windows App SDK**](https://github.com/microsoft/WindowsAppSDK) by Microsoft
 
-- **natsurainko** - *启动核心 启动器*
-- **xingxing520** - *服务 网络服务部署*
+**Disclaimer**: This project **IS NOT AFFILIATED** with [**NetEase (NetEase Co., Ltd.)**](https://www.neteasegames.com/)  or [**Minecraft (China/International PTE. LTD.)**](https://www.minecraft.net/en-us) by any means and is completely open-sourced. Any contributions are welcomed! 😃
 
-> natsurainko <null>
+# UI Design Overview
 
-## 版权说明
+# How can I support this project?
 
-[MIT License](https://mit-license.org/) 授权许可，详情请参阅 [LICENSE](LICENSE)  
+Supporting is never an obligation but is always appreciated and motivates us to invest more time in the project and to keep this and other projects alive. To this end, should you decide to support us, here are ways you can do so :smile::
+
+## Copyright Notice
+
+[MIT License](https://mit-license.org/) is granted for this work. Please refer to [LICENSE](LICENSE)  
 Copyright © 2023  CubeX
 
 <!-- links -->
