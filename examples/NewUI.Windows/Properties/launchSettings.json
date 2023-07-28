@@ -1,0 +1,38 @@
+{
+  "profiles": {
+    "X Launcher": {
+      "commandName": "Project",
+      "nativeDebugging": false
+    },
+    "Updater": {
+      "commandName": "Project",
+      "commandLineArgs": "update --input \"C:\\Program Files\\X Launcher\" --channel Preview",
+      "nativeDebugging": false
+    },
+    "Elevate Updater": {
+      "commandName": "Project",
+      "commandLineArgs": "elevateupdate --input \"H:\\Data\\test\" --channel Preview",
+      "nativeDebugging": false
+    },
+    "Reindexer": {
+      "commandName": "Project",
+      "commandLineArgs": "reindex --input \"\\myGit\\XLauncher-ReleaseRepo\\preview\" --upver 1.0.40.5",
+      "nativeDebugging": false
+    },
+    "Take Ownership": {
+      "commandName": "Project",
+      "commandLineArgs": "takeownership --input \"H:\\Data\\Games\\miHoYoGames\"",
+      "nativeDebugging": false
+    },
+    "Migrate": {
+      "commandName": "Project",
+      "commandLineArgs": "migrate --input \"C:\\Program Files\\Honkai Impact 3 sea\" --output \"H:\\Games\\miHoYoGames\\Hi3SEA\"",
+      "nativeDebugging": false
+    },
+    "Hi3 Cache Updater": {
+      "commandName": "Project",
+      "commandLineArgs": "hi3cacheupdate",
+      "nativeDebugging": true
+    }
+  }
+}

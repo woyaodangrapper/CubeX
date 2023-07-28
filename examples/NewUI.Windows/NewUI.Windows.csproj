@@ -5,14 +5,13 @@
 		<TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
 		<Platforms>x64</Platforms>
 		<UseWinUI>true</UseWinUI>
-		<ApplicationIcon>icon.ico</ApplicationIcon>
+		<ApplicationIcon>logo.ico</ApplicationIcon>
 		<LangVersion>preview</LangVersion>
 		<Configurations>Debug;Release;Publish</Configurations>
 		<WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
-		<Version>1.71.2</Version>
+		<Version>0.0.1</Version>
 		<DebugType>portable</DebugType>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
-		<StartupObject>NewUI.Program</StartupObject>
 		<EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
 		<SatelliteResourceLanguages>en</SatelliteResourceLanguages>
 		<BuiltInComInteropSupport>true</BuiltInComInteropSupport>
@@ -22,6 +21,7 @@
 		<TieredPGO>true</TieredPGO>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<StartupObject>XLauncher.XLauncherProgram</StartupObject>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -35,4 +35,35 @@
 		<PackageReference Include="System.Drawing.Common" Version="7.0.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<ProjectReference Include="..\..\src\Infrastructures\ColorThief\ColorThief.csproj" />
+		<ProjectReference Include="..\..\src\Infrastructures\Hi3Helper.Core\Hi3Helper.Core.csproj" />
+	</ItemGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+		<DefineConstants>DISABLE_XAML_GENERATED_MAIN;PREVIEW;DISABLETRANSPARENT;DISABLEMOVEMIGRATE</DefineConstants>
+		<Optimize>False</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+		<DefineConstants>DISABLE_XAML_GENERATED_MAIN;PREVIEW;DISABLETRANSPARENT;DISABLEMOVEMIGRATE</DefineConstants>
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Publish|x64'">
+		<DefineConstants>DISABLE_XAML_GENERATED_MAIN;DISABLETRANSPARENT;DISABLEMOVEMIGRATE</DefineConstants>
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Update="App.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</None>
+	</ItemGroup>
+
+	<Target Name="ConfigureTrimming" BeforeTargets="PrepareForILLink">
+		<ItemGroup>
+			<ManagedAssemblyToLink Condition="'%(Filename)' == 'Microsoft.WindowsAppSDK'">
+				<IsTrimmable>true</IsTrimmable>
+			</ManagedAssemblyToLink>
+		</ItemGroup>
+	</Target>
 </Project>

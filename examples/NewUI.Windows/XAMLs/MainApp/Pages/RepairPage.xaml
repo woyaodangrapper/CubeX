@@ -1,0 +1,131 @@
+﻿<Page
+    x:Class="XLauncher.Pages.RepairPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:XLauncher"
+    xmlns:statics="using:XLauncher.Statics"
+    xmlns:helper="using:Hi3Helper"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:control="using:CommunityToolkit.WinUI.UI.Controls"
+    mc:Ignorable="d"
+    Unloaded="Page_Unloaded" Loaded="InitializeLoaded">
+
+    <Grid>
+        <Grid Margin="32,80,32,18" x:Name="PageContent">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition/>
+                <RowDefinition Height="124"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="{x:Bind helper:Locale.Lang._GameRepairPage.PageTitle}" Grid.Row="0" Style="{ThemeResource TitleLargeTextBlockStyle}"/>
+            <Grid x:Name="RepairDataTableGrid" Grid.Row="1" VerticalAlignment="Stretch" Visibility="Collapsed">
+                <Grid.ChildrenTransitions>
+                    <TransitionCollection>
+                        <PopupThemeTransition/>
+                    </TransitionCollection>
+                </Grid.ChildrenTransitions>
+                <control:DataGrid
+                    x:Name="RepairDataGrid"
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch"
+                    CanUserReorderColumns="False"    
+                    IsReadOnly="True"
+                    AutoGenerateColumns="False"
+                    CanUserSortColumns="True"
+                    ItemsSource="{x:Bind statics:PageStatics._GameRepair.AssetEntry}">
+                    <control:DataGrid.Columns>
+                        <control:DataGridTextColumn Header="{x:Bind helper:Locale.Lang._GameRepairPage.ListCol1}" Binding="{Binding Name}" Tag="FileName" Width="296" FontSize="13"/>
+                        <control:DataGridTextColumn Header="{x:Bind helper:Locale.Lang._GameRepairPage.ListCol2}" Binding="{Binding AssetType}" Tag="DataType" FontSize="13"/>
+                        <control:DataGridTextColumn Header="{x:Bind helper:Locale.Lang._GameRepairPage.ListCol3}" Binding="{Binding Source}" Tag="Source" Width="436" FontSize="13"/>
+                        <control:DataGridTextColumn Header="{x:Bind helper:Locale.Lang._GameRepairPage.ListCol4}" Binding="{Binding SizeStr}" Tag="FileSize" Width="128" FontSize="13"/>
+                        <control:DataGridTextColumn Header="{x:Bind helper:Locale.Lang._GameRepairPage.ListCol5}" Binding="{Binding LocalCRC}" Tag="CurCRC" Width="92" FontSize="13"/>
+                        <control:DataGridTextColumn Header="{x:Bind helper:Locale.Lang._GameRepairPage.ListCol6}" Binding="{Binding RemoteCRC}" Tag="ExptCRC" Width="92" FontSize="13"/>
+                    </control:DataGrid.Columns>
+                </control:DataGrid>
+            </Grid>
+            <StackPanel Grid.Row="2" VerticalAlignment="Bottom">
+                <TextBlock x:Name="RepairStatus" Text="{x:Bind helper:Locale.Lang._GameRepairPage.Status1}" FontSize="18" Grid.Row="1" Margin="0,0,0,16"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="230"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="{x:Bind helper:Locale.Lang._GameRepairPage.PerProgressTitle1}" FontSize="16" FontWeight="Medium" Margin="0,0,0,8"/>
+                        <control:DockPanel HorizontalAlignment="Stretch" LastChildFill="False">
+                            <TextBlock x:Name="RepairPerFileStatus" Text="{x:Bind helper:Locale.Lang._GameRepairPage.StatusNone}" control:DockPanel.Dock="Left" Style="{ThemeResource BodyStrongTextBlockStyle}"/>
+                            <TextBlock Text="%" control:DockPanel.Dock="Right" Style="{ThemeResource BodyStrongTextBlockStyle}"/>
+                            <TextBlock Text="{Binding Value, ElementName=RepairPerFileProgressBar}" control:DockPanel.Dock="Right" Style="{ThemeResource BodyStrongTextBlockStyle}"/>
+                        </control:DockPanel>
+                        <ProgressBar x:Name="RepairPerFileProgressBar" Maximum="100" Value="0" Height="25"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="32,0">
+                        <TextBlock Text="{x:Bind helper:Locale.Lang._GameRepairPage.TotalProgressTitle1}"  FontSize="16" FontWeight="Medium" Margin="0,0,0,8"/>
+                        <control:DockPanel HorizontalAlignment="Stretch" LastChildFill="False">
+                            <TextBlock x:Name="RepairTotalStatus" Text="{x:Bind helper:Locale.Lang._GameRepairPage.StatusNone}" control:DockPanel.Dock="Left" Style="{ThemeResource BodyStrongTextBlockStyle}"/>
+                            <TextBlock Text="%" control:DockPanel.Dock="Right" Style="{ThemeResource BodyStrongTextBlockStyle}"/>
+                            <TextBlock Text="{Binding Value, ElementName=RepairTotalProgressBar}" control:DockPanel.Dock="Right" Style="{ThemeResource BodyStrongTextBlockStyle}"/>
+                        </control:DockPanel>
+                        <ProgressBar x:Name="RepairTotalProgressBar" Maximum="100" Value="0" Height="25"/>
+                    </StackPanel>
+                    <Grid Grid.Row="1" Grid.Column="2" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="RepairFilesBtn" HorizontalAlignment="Stretch" CornerRadius="16"
+                                Visibility="Collapsed" Style="{ThemeResource AccentButtonStyle}" Click="StartGameRepair">
+                            <StackPanel Orientation="Horizontal">
+                                <FontIcon FontFamily="{ThemeResource FontAwesomeSolid}" Glyph="&#xf6e3;" FontSize="16"/>
+                                <TextBlock Text="{x:Bind helper:Locale.Lang._GameRepairPage.RepairBtn1}" FontWeight="Medium" Margin="8,0"/>
+                            </StackPanel>
+                        </Button>
+                        <SplitButton x:Name="CheckFilesBtn" HorizontalAlignment="Stretch" CornerRadius="16"
+                                     Click="StartGameCheckSplitButton" Tag="Fast" ToolTipService.ToolTip="{x:Bind helper:Locale.Lang._GameRepairPage.RepairBtn2QuickDesc}">
+                            <StackPanel Orientation="Horizontal">
+                                <FontIcon FontFamily="{ThemeResource FontAwesomeSolid}" Glyph="&#xf002;" FontSize="16"/>
+                                <TextBlock Text="{x:Bind helper:Locale.Lang._GameRepairPage.RepairBtn2Quick}" FontWeight="Medium" Margin="8,0"/>
+                            </StackPanel>
+                            <SplitButton.Flyout>
+                                <Flyout Placement="Top">
+                                    <StackPanel Margin="-8">
+                                        <Button x:Name="CheckFilesQuickBtn" HorizontalAlignment="Stretch"
+                                                Click="StartGameCheck" Margin="0,0,0,8" Tag="Fast"
+                                                ToolTipService.ToolTip="{x:Bind helper:Locale.Lang._GameRepairPage.RepairBtn2QuickDesc}">
+                                            <StackPanel Orientation="Horizontal">
+                                                <FontIcon FontFamily="{ThemeResource FontAwesomeSolid}" Glyph="&#xf101;" FontSize="16"/>
+                                                <TextBlock Text="{x:Bind helper:Locale.Lang._GameRepairPage.RepairBtn2Quick}" FontWeight="Medium" Margin="8,0"/>
+                                            </StackPanel>
+                                        </Button>
+                                        <Button x:Name="CheckFilesFullBtn" HorizontalAlignment="Stretch" Style="{ThemeResource AccentButtonStyle}"
+                                                Click="StartGameCheck" Tag="Full"
+                                                ToolTipService.ToolTip="{x:Bind helper:Locale.Lang._GameRepairPage.RepairBtn2FullDesc}">
+                                            <StackPanel Orientation="Horizontal">
+                                                <FontIcon FontFamily="{ThemeResource FontAwesomeSolid}" Glyph="&#xf105;" FontSize="16"/>
+                                                <TextBlock Text="{x:Bind helper:Locale.Lang._GameRepairPage.RepairBtn2Full}" FontWeight="Medium" Margin="8,0"/>
+                                            </StackPanel>
+                                        </Button>
+                                    </StackPanel>
+                                </Flyout>
+                            </SplitButton.Flyout>
+                        </SplitButton>
+                        <Button Grid.Column="1" x:Name="CancelBtn" HorizontalAlignment="Stretch" IsEnabled="False" CornerRadius="16" Margin="16,0,0,0" Click="CancelOperation">
+                            <TextBlock Text="{x:Bind helper:Locale.Lang._Misc.Cancel}" FontWeight="Medium" Margin="8,0"/>
+                        </Button>
+                    </Grid>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="Overlay" Visibility="Collapsed">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Margin="0,176,0,0">
+                <ProgressRing x:Name="Ring" IsActive="True" IsIndeterminate="false" Width="48" Height="48" Margin="32" Value="100" Maximum="100"/>
+                <TextBlock x:Name="OverlayTitle" Text="Title" Style="{ThemeResource SubtitleTextBlockStyle}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="OverlaySubtitle" Text="Subtitle" Style="{ThemeResource BodyStrongTextBlockStyle}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,8,0,192"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>
