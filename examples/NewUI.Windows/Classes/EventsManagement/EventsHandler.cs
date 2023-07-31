@@ -2,30 +2,28 @@
 using Hi3Helper.Data;
 using Hi3Helper.Http;
 using Hi3Helper.Shared.ClassStruct;
-using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
 using Squirrel;
-using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Text.Json;
-using System.Threading.Tasks;
 using Windows.Foundation;
-using static XLauncher.InnerLauncherConfig;
 using static Hi3Helper.Locale;
 using static Hi3Helper.Logger;
 using static Hi3Helper.Shared.Region.LauncherConfig;
+using static XLauncher.InnerLauncherConfig;
 
 namespace XLauncher
 {
     #region LauncherUpdateRegion
+
     internal static class LauncherUpdateWatcher
     {
         public static string UpdateChannelName;
         public static AppUpdateVersionProp UpdateProperty;
         private static LauncherUpdateInvoker invoker = new LauncherUpdateInvoker();
+
         public static void GetStatus(LauncherUpdateProperty e) => invoker.GetStatus(e);
+
         public static async void StartCheckUpdate()
         {
             UpdateChannelName = IsPreview ? "preview" : "stable";
@@ -39,7 +37,7 @@ namespace XLauncher
                         using (Updater updater = new Updater(UpdateChannelName))
                         {
                             UpdateInfo info = await updater.StartCheck();
-                            GameVersion RemoteVersion = new GameVersion(info.FutureReleaseEntry.Version.Version);
+                            GameVersion RemoteVersion = new GameVersion(info.FutureReleaseEntry.Version.Release);
 
                             AppUpdateVersionProp miscMetadata = await GetUpdateMetadata();
                             UpdateProperty = new AppUpdateVersionProp { ver = RemoteVersion.VersionString, time = miscMetadata.time };
@@ -101,6 +99,7 @@ namespace XLauncher
     internal class LauncherUpdateInvoker
     {
         public static event EventHandler<LauncherUpdateProperty> UpdateEvent;
+
         public void GetStatus(LauncherUpdateProperty e) => UpdateEvent?.Invoke(this, e);
     }
 
@@ -110,37 +109,49 @@ namespace XLauncher
         public GameVersion NewVersionName { get; set; }
         public bool QuitFromUpdateMenu { get; set; } = false;
     }
-    #endregion
+
+    #endregion LauncherUpdateRegion
+
     #region ThemeChangeRegion
+
     internal static class ThemeChanger
     {
-        static ThemeChangerInvoker invoker = new ThemeChangerInvoker();
+        private static ThemeChangerInvoker invoker = new ThemeChangerInvoker();
+
         public static void ChangeTheme(ApplicationTheme e) => invoker.ChangeTheme(e);
     }
 
     internal class ThemeChangerInvoker
     {
         public static event EventHandler<ThemeProperty> ThemeEvent;
+
         public void ChangeTheme(ApplicationTheme e) => ThemeEvent?.Invoke(this, new ThemeProperty(e));
     }
 
     internal class ThemeProperty
     {
         internal ThemeProperty(ApplicationTheme e) => Theme = e;
+
         public ApplicationTheme Theme { get; private set; }
     }
-    #endregion
+
+    #endregion ThemeChangeRegion
+
     #region ErrorSenderRegion
-    public enum ErrorType { Unhandled, GameError, Connection }
+
+    public enum ErrorType
+    { Unhandled, GameError, Connection }
 
     internal static class ErrorSender
     {
-        static ErrorSenderInvoker invoker = new ErrorSenderInvoker();
+        private static ErrorSenderInvoker invoker = new ErrorSenderInvoker();
         public static string ExceptionContent;
         public static ErrorType ExceptionType;
         public static string ExceptionTitle;
         public static string ExceptionSubtitle;
+
         public static void SendException(Exception e, ErrorType eT = ErrorType.Unhandled) => invoker.SendException(e, eT);
+
         public static void SendExceptionWithoutPage(Exception e, ErrorType eT = ErrorType.Unhandled)
         {
             ExceptionContent = e.ToString();
@@ -156,10 +167,12 @@ namespace XLauncher
                     ExceptionTitle = Lang._UnhandledExceptionPage.UnhandledTitle1;
                     ExceptionSubtitle = Lang._UnhandledExceptionPage.UnhandledTitle1;
                     break;
+
                 case ErrorType.Connection:
                     ExceptionTitle = Lang._UnhandledExceptionPage.UnhandledTitle2;
                     ExceptionSubtitle = Lang._UnhandledExceptionPage.UnhandledSubtitle2;
                     break;
+
                 case ErrorType.GameError:
                     ExceptionTitle = Lang._UnhandledExceptionPage.UnhandledTitle3;
                     ExceptionSubtitle = Lang._UnhandledExceptionPage.UnhandledSubtitle3;
@@ -171,6 +184,7 @@ namespace XLauncher
     internal class ErrorSenderInvoker
     {
         public static event EventHandler<ErrorProperties> ExceptionEvent;
+
         public void SendException(Exception e, ErrorType eT) => ExceptionEvent?.Invoke(this, new ErrorProperties(e, eT));
     }
 
@@ -184,23 +198,31 @@ namespace XLauncher
             ErrorSender.ExceptionType = errorType;
             ErrorSender.SetPageTitle(errorType);
         }
+
         public Exception Exception { get; private set; }
         public string ExceptionString { get; private set; }
     }
-    #endregion
+
+    #endregion ErrorSenderRegion
+
     #region MainFrameRegion
+
     internal static class MainFrameChanger
     {
         private static Type currentWindow;
         private static Type currentPage;
-        static MainFrameChangerInvoker invoker = new MainFrameChangerInvoker();
+        private static MainFrameChangerInvoker invoker = new MainFrameChangerInvoker();
+
         public static void ChangeWindowFrame(Type e) => ChangeWindowFrame(e, new DrillInNavigationTransitionInfo());
+
         public static void ChangeWindowFrame(Type e, NavigationTransitionInfo eT)
         {
             currentWindow = e;
             invoker.ChangeWindowFrame(e, eT);
         }
+
         public static void ChangeMainFrame(Type e) => ChangeMainFrame(e, new DrillInNavigationTransitionInfo());
+
         public static void ChangeMainFrame(Type e, NavigationTransitionInfo eT)
         {
             currentPage = e;
@@ -208,14 +230,18 @@ namespace XLauncher
         }
 
         public static void ReloadCurrentWindowFrame() => ChangeWindowFrame(currentWindow);
+
         public static void ReloadCurrentMainFrame() => ChangeMainFrame(currentPage);
     }
 
     internal class MainFrameChangerInvoker
     {
         public static event EventHandler<MainFrameProperties> WindowFrameEvent;
+
         public static event EventHandler<MainFrameProperties> FrameEvent;
+
         public void ChangeWindowFrame(Type e, NavigationTransitionInfo eT) => WindowFrameEvent?.Invoke(this, new MainFrameProperties(e, eT));
+
         public void ChangeMainFrame(Type e, NavigationTransitionInfo eT) => FrameEvent?.Invoke(this, new MainFrameProperties(e, eT));
     }
 
@@ -226,20 +252,26 @@ namespace XLauncher
             this.FrameTo = FrameTo;
             this.Transition = Transition;
         }
+
         public Type FrameTo { get; private set; }
         public NavigationTransitionInfo Transition { get; private set; }
     }
-    #endregion
+
+    #endregion MainFrameRegion
+
     #region NotificationPushRegion
+
     internal static class NotificationSender
     {
-        static NotificationInvoker invoker = new NotificationInvoker();
+        private static NotificationInvoker invoker = new NotificationInvoker();
+
         public static void SendNotification(NotificationInvokerProp e) => invoker.SendNotification(e);
     }
 
     internal class NotificationInvoker
     {
         public static event EventHandler<NotificationInvokerProp> EventInvoker;
+
         public void SendNotification(NotificationInvokerProp e) => EventInvoker?.Invoke(this, e);
     }
 
@@ -250,20 +282,28 @@ namespace XLauncher
         public NotificationProp Notification { get; set; }
         public bool IsAppNotif { get; set; } = true;
     }
-    #endregion
+
+    #endregion NotificationPushRegion
+
     #region BackgroundRegion
+
     internal static class BackgroundImgChanger
     {
-        static BackgroundImgChangerInvoker invoker = new BackgroundImgChangerInvoker();
+        private static BackgroundImgChangerInvoker invoker = new BackgroundImgChangerInvoker();
+
         public static async Task WaitForBackgroundToLoad() => await invoker.WaitForBackgroundToLoad();
+
         public static void ChangeBackground(string ImgPath, bool IsCustom = true) => invoker.ChangeBackground(ImgPath, IsCustom);
     }
 
     internal class BackgroundImgChangerInvoker
     {
         public static event EventHandler<BackgroundImgProperty> ImgEvent;
-        BackgroundImgProperty property;
+
+        private BackgroundImgProperty property;
+
         public async Task WaitForBackgroundToLoad() => await Task.Run(() => { while (!property.IsImageLoaded) { } });
+
         public void ChangeBackground(string ImgPath, bool IsCustom) => ImgEvent?.Invoke(this, property = new BackgroundImgProperty(ImgPath, IsCustom));
     }
 
@@ -279,17 +319,22 @@ namespace XLauncher
         public string ImgPath { get; private set; }
         public bool IsCustom { get; private set; }
     }
-    #endregion
+
+    #endregion BackgroundRegion
+
     #region SpawnWebView2Region
+
     internal static class SpawnWebView2
     {
-        static SpawnWebView2Invoker invoker = new SpawnWebView2Invoker();
+        private static SpawnWebView2Invoker invoker = new SpawnWebView2Invoker();
+
         public static void SpawnWebView2Window(string URL) => invoker.SpawnWebView2Window(URL);
     }
 
     internal class SpawnWebView2Invoker
     {
         public static event EventHandler<SpawnWebView2Property> SpawnEvent;
+
         public void SpawnWebView2Window(string URL) => SpawnEvent?.Invoke(this, new SpawnWebView2Property(URL));
     }
 
@@ -299,17 +344,22 @@ namespace XLauncher
 
         public string URL { get; set; }
     }
-    #endregion
+
+    #endregion SpawnWebView2Region
+
     #region ShowLoadingPage
+
     internal static class ShowLoadingPage
     {
-        static ShowLoadingPageInvoker invoker = new ShowLoadingPageInvoker();
+        private static ShowLoadingPageInvoker invoker = new ShowLoadingPageInvoker();
+
         public static void ShowLoading(string Title, string Subtitle, bool Hide = false) => invoker.ShowLoading(Hide, Title, Subtitle);
     }
 
     internal class ShowLoadingPageInvoker
     {
         public static event EventHandler<ShowLoadingPageProperty> PageEvent;
+
         public void ShowLoading(bool Hide, string Title, string Subtitle) => PageEvent?.Invoke(this, new ShowLoadingPageProperty(Hide, Title, Subtitle));
     }
 
@@ -321,12 +371,16 @@ namespace XLauncher
             this.Title = Title;
             this.Subtitle = Subtitle;
         }
+
         public bool Hide { get; private set; }
         public string Title { get; private set; }
         public string Subtitle { get; private set; }
     }
-    #endregion
+
+    #endregion ShowLoadingPage
+
     #region ChangeTitleDragArea
+
     public enum DragAreaTemplate
     {
         Full,
@@ -335,13 +389,15 @@ namespace XLauncher
 
     internal static class ChangeTitleDragArea
     {
-        static ChangeTitleDragAreaInvoker invoker = new ChangeTitleDragAreaInvoker();
+        private static ChangeTitleDragAreaInvoker invoker = new ChangeTitleDragAreaInvoker();
+
         public static void Change(DragAreaTemplate Template) => invoker.Change(Template);
     }
 
     internal class ChangeTitleDragAreaInvoker
     {
         public static event EventHandler<ChangeTitleDragAreaProperty> TitleBarEvent;
+
         public void Change(DragAreaTemplate Template) => TitleBarEvent?.Invoke(this, new ChangeTitleDragAreaProperty(Template));
     }
 
@@ -354,5 +410,6 @@ namespace XLauncher
 
         public DragAreaTemplate Template { get; private set; }
     }
-    #endregion
+
+    #endregion ChangeTitleDragArea
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.CommandLine;
+﻿using System.CommandLine;
 
 using static XLauncher.InnerLauncherConfig;
 
@@ -7,7 +6,8 @@ namespace XLauncher
 {
     public static partial class ArgumentParser
     {
-        static RootCommand rootCommand = new RootCommand();
+        private static RootCommand rootCommand = new RootCommand();
+
         public static void ParseArguments(params string[] args)
         {
             if (args.Length == 0)
@@ -22,26 +22,32 @@ namespace XLauncher
                     m_appMode = AppMode.Hi3CacheUpdater;
                     ParseHi3CacheUpdaterArguments(args);
                     break;
+
                 case "update":
                     m_appMode = AppMode.Updater;
                     ParseUpdaterArguments(args);
                     break;
+
                 case "elevateupdate":
                     m_appMode = AppMode.ElevateUpdater;
                     ParseElevateUpdaterArguments(args);
                     break;
+
                 case "takeownership":
                     m_appMode = AppMode.InvokerTakeOwnership;
                     ParseTakeOwnershipArguments(args);
                     break;
+
                 case "migrate":
                     m_appMode = AppMode.InvokerMigrate;
                     ParseMigrateArguments(false, args);
                     break;
+
                 case "migratebhi3l":
                     m_appMode = AppMode.InvokerMigrate;
                     ParseMigrateArguments(true, args);
                     break;
+
                 case "movesteam":
                     m_appMode = AppMode.InvokerMoveSteam;
                     ParseMoveSteamArguments(args);
@@ -79,7 +85,8 @@ namespace XLauncher
 
         public static void AddUpdaterOptions()
         {
-            Option o_Input, o_Channel;
+            Option<string> o_Input;
+            Option<AppReleaseChannel> o_Channel;
             rootCommand.AddOption(o_Input = new Option<string>(new string[] { "--input", "-i" }, "Path of the app") { IsRequired = true });
             rootCommand.AddOption(o_Channel = new Option<AppReleaseChannel>(new string[] { "--channel", "-c" }, "Release channel of the app") { IsRequired = true }.FromAmong());
             rootCommand.SetHandler((string Input, AppReleaseChannel ReleaseChannel) =>
@@ -92,9 +99,9 @@ namespace XLauncher
             }, o_Input, o_Channel);
         }
 
-        public static void ParseTakeOwnershipArguments(params string[] args)
+        public static async void ParseTakeOwnershipArguments(params string[] args)
         {
-            Option o_Input;
+            Option<string> o_Input;
             rootCommand.AddArgument(new Argument<string>("takeownership", "Take ownership of the folder") { HelpName = null });
             rootCommand.AddOption(o_Input = new Option<string>(new string[] { "--input", "-i" }, "Path of the folder to be taken") { IsRequired = true });
             rootCommand.SetHandler((string Input) =>
@@ -117,7 +124,7 @@ namespace XLauncher
 
         private static void AddMigrateOptions(bool isBHI3L)
         {
-            Option o_Input, o_Output, o_GameVer = null, o_RegLoc = null;
+            Option<string> o_Input, o_Output, o_GameVer = null, o_RegLoc = null;
             rootCommand.AddOption(o_Input = new Option<string>(new string[] { "--input", "-i" }, "Installation Source") { IsRequired = true });
             rootCommand.AddOption(o_Output = new Option<string>(new string[] { "--output", "-o" }, "Installation Target") { IsRequired = true });
             if (isBHI3L)
@@ -154,7 +161,7 @@ namespace XLauncher
 
         public static void ParseMoveSteamArguments(params string[] args)
         {
-            Option o_Input, o_Output, o_KeyName = null, o_RegLoc = null;
+            Option<string> o_Input, o_Output, o_KeyName = null, o_RegLoc = null;
             rootCommand.AddArgument(new Argument<string>("movesteam", "Migrate Game from Steam to another location") { HelpName = null });
             rootCommand.AddOption(o_Input = new Option<string>(new string[] { "--input", "-i" }, "Installation Source") { IsRequired = true });
             rootCommand.AddOption(o_Output = new Option<string>(new string[] { "--output", "-o" }, "Installation Target") { IsRequired = true });

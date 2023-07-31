@@ -130,7 +130,7 @@
             </StackPanel>
             <StackPanel x:Name="AboutApp" Grid.Column="1" VerticalAlignment="Top">
                 <StackPanel>
-                    <Image Source="ms-appx:///Assets/XLauncherLogo.png" Width="192" HorizontalAlignment="Left" />
+                    <Image Source="ms-appx:///Assets/XLauncherLogo.png" Width="64" HorizontalAlignment="Left" />
                     <TextBlock Text="{x:Bind helper:Locale.Lang._SettingsPage.About}" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,16,0,8" />
                     <Grid Margin="8,0">
                         <StackPanel Grid.Column="1">

@@ -2,17 +2,12 @@
 using Hi3Helper.Http;
 using Squirrel;
 using Squirrel.Sources;
-using System;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
 using System.Text.Json;
-using System.Threading;
-using System.Threading.Tasks;
-using static XLauncher.InnerLauncherConfig;
 using static Hi3Helper.Data.ConverterTool;
 using static Hi3Helper.Locale;
 using static Hi3Helper.Shared.Region.LauncherConfig;
+using static XLauncher.InnerLauncherConfig;
 
 namespace XLauncher
 {
@@ -31,6 +26,7 @@ namespace XLauncher
         private static string applyElevatedPath = Path.Combine(workingDir, "..\\", $"ApplyUpdate.exe");
 
         public event EventHandler<UpdaterStatus> UpdaterStatusChanged;
+
         public event EventHandler<UpdaterProgress> UpdaterProgressChanged;
 
         private UpdaterStatus Status;
@@ -41,7 +37,7 @@ namespace XLauncher
             this.ChannelName = ChannelName;
             this.ChannelURL = CombineURLFromString(FallbackCDNUtil.GetPreferredCDN().URLPrefix, "squirrel", this.ChannelName);
             this.UpdateDownloader = new UpdateManagerHttpAdapter();
-            this.UpdateManager = new UpdateManager(ChannelURL, null, null, this.UpdateDownloader);
+            this.UpdateManager = new UpdateManager(ChannelURL, this.UpdateDownloader);
             this.UpdateStopwatch = Stopwatch.StartNew();
             this.Status = new UpdaterStatus();
             this.Progress = new UpdaterProgress(UpdateStopwatch, 0, 100);
@@ -55,11 +51,12 @@ namespace XLauncher
         }
 
         public async Task<UpdateInfo> StartCheck() => await UpdateManager.CheckForUpdate();
+
         public bool IsUpdateAvailable(UpdateInfo info)
         {
             if (!info.ReleasesToApply.Any())
             {
-                NewVersionTag = new GameVersion(info.FutureReleaseEntry.Version.Version);
+                NewVersionTag = new GameVersion(info.FutureReleaseEntry.Version.Release);
                 return DoesLatestVersionExist(NewVersionTag.VersionString);
             }
 
@@ -82,7 +79,7 @@ namespace XLauncher
             {
                 if (!UpdateInfo.ReleasesToApply.Any())
                 {
-                    NewVersionTag = new GameVersion(UpdateInfo.FutureReleaseEntry.Version.Version);
+                    NewVersionTag = new GameVersion(UpdateInfo.FutureReleaseEntry.Version.Release);
                     if (DoesLatestVersionExist(NewVersionTag.VersionString))
                     {
                         Progress = new UpdaterProgress(UpdateStopwatch, 100, 100);
@@ -97,7 +94,7 @@ namespace XLauncher
                     return false;
                 }
 
-                NewVersionTag = new GameVersion(UpdateInfo.ReleasesToApply.FirstOrDefault().Version.Version);
+                NewVersionTag = new GameVersion(UpdateInfo.ReleasesToApply.FirstOrDefault().Version.Release);
 
                 await UpdateManager.DownloadReleases(UpdateInfo.ReleasesToApply, (progress) =>
                 {
@@ -123,7 +120,6 @@ namespace XLauncher
 
         private async Task StartLegacyUpdate()
         {
-
             using (Http _httpClient = new Http(true))
             {
                 UpdateStopwatch = Stopwatch.StartNew();
@@ -202,6 +198,7 @@ namespace XLauncher
         }
 
         public void UpdateStatus() => UpdaterStatusChanged?.Invoke(this, Status);
+
         public void UpdateProgress() => UpdaterProgressChanged?.Invoke(this, Progress);
 
         public class UpdaterStatus
@@ -226,6 +223,7 @@ namespace XLauncher
 
                 ProgressPercentage = counter;
             }
+
             public long DownloadedSize { get; private set; }
             public long TotalSizeToDownload { get; private set; }
             public double ProgressPercentage { get; private set; }
