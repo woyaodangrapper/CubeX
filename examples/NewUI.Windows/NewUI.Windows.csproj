@@ -22,6 +22,8 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<StartupObject>XLauncher.XLauncherProgram</StartupObject>
+		<PublishAot>true</PublishAot>
+		<IsAotCompatible>true</IsAotCompatible>
 	</PropertyGroup>
 
 	<ItemGroup>

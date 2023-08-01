@@ -9,6 +9,7 @@ using Squirrel;
 using System.Diagnostics;
 using System.Globalization;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using Windows.UI.ViewManagement;
@@ -21,16 +22,17 @@ using static XLauncher.InnerLauncherConfig;
 
 namespace XLauncher;
 
-public static class XLauncherProgram
+public static partial class XLauncherProgram
 {
-    [DllImport("Microsoft.ui.xaml.dll")]
-    private static extern void XamlCheckProcessRequirements();
+    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvStdcall) })]
+    [LibraryImport("Microsoft.ui.xaml.dll", SetLastError = true, EntryPoint = "XamlCheckProcessRequirements")]
+    private static partial void XamlCheckProcessRequirements();
 
     [STAThread]
     public static void Main(params string[] args)
     {
 #if PREVIEW
-            IsPreview = true;
+        IsPreview = true;
 #endif
         AppCurrentVersion = new GameVersion(Assembly.GetExecutingAssembly().GetName().Version);
         AppCurrentVersionString = AppCurrentVersion.VersionString;
@@ -162,15 +164,15 @@ public static class XLauncherProgram
             /// Add shortcut and uninstaller entry on first start-up
             onInitialInstall: (_, sqr) =>
             {
-                Console.WriteLine("Please do not close this console window while Collapse is preparing the installation via Squirrel...");
+                Console.WriteLine("Please do not close this console window while CubeX is preparing the installation via Squirrel...");
             },
             onAppUpdate: (_, sqr) =>
             {
-                Console.WriteLine("Please do not close this console window while Collapse is updating via Squirrel...");
+                Console.WriteLine("Please do not close this console window while CubeX is updating via Squirrel...");
             },
             onAppUninstall: (_, sqr) =>
             {
-                Console.WriteLine("Uninstalling Collapse via Squirrel...\r\nPlease do not close this console window while action is being performed!");
+                Console.WriteLine("Uninstalling CubeX via Squirrel...\r\nPlease do not close this console window while action is being performed!");
             },
             onEveryRun: (_, _, _) => { }
         );

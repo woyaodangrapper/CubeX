@@ -17,14 +17,15 @@
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
+        <!--发现了软件调试在启动时通过Image控件加载启动背景图会导致内存击穿， OS 版本:          10.0.19045 暂缺 Build 19045 16G-->
         <Image Grid.Column="0" Grid.ColumnSpan="2" Source="ms-appx:///Assets/BG/StartUpBG.png" Stretch="UniformToFill" VerticalAlignment="Center" Margin="-16,-32,-16,-16" />
         <StackPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
             <StackPanel.Transitions>
                 <EntranceThemeTransition />
             </StackPanel.Transitions>
             <StackPanel x:Name="MenuPanel" CornerRadius="16"
-                    Margin="0,32,64,32" Padding="32" Shadow="{ThemeResource SharedShadow}" Background="{ThemeResource DialogAcrylicBrush}">
-                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left">
+                    Margin="0,32,64,32" Padding="32">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Shadow="{ThemeResource SharedShadow}" Background="{ThemeResource DialogAcrylicBrush}">
                     <TextBlock Text="Select your language"
                    TextAlignment="Left"
                    HorizontalAlignment="Left" Margin="0,0,0,8"
