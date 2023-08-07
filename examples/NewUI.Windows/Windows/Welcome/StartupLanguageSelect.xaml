@@ -18,7 +18,7 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <!--发现了软件调试在启动时通过Image控件加载启动背景图会导致内存击穿， OS 版本:          10.0.19045 暂缺 Build 19045 16G-->
-        <Image Grid.Column="0" Grid.ColumnSpan="2" Source="ms-appx:///Assets/BG/StartUpBG.png" Stretch="UniformToFill" VerticalAlignment="Center" Margin="-16,-32,-16,-16" />
+        <Image Grid.Column="0" Grid.ColumnSpan="2" Source="ms-appx:///Assets/Image/operation-background.png" Stretch="UniformToFill" VerticalAlignment="Center" Margin="-16,-32,-16,-16" />
         <StackPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
             <StackPanel.Transitions>
                 <EntranceThemeTransition />

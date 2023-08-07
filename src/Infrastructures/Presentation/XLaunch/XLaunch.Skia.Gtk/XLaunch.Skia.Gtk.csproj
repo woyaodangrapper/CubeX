@@ -34,9 +34,5 @@
 		<PackageReference Include="Uno.WinUI.RemoteControl" Condition="'$(Configuration)'=='Debug'" />
 		<PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" />
 	</ItemGroup>
-	<ItemGroup>
-		<ProjectReference Include="..\XLaunch\XLaunch.csproj" />
-		<ProjectReference Include="..\XLaunch.DataContracts\XLaunch.DataContracts.csproj" />
-	</ItemGroup>
 	<Import Project="..\XLaunch.Base\base.props" />
 </Project>

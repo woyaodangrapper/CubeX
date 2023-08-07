@@ -49,9 +49,5 @@
 	<ItemGroup>
 		<ApplicationDefinition Include="Wpf\App.xaml" XamlRuntime="Wpf" />
 	</ItemGroup>
-	<ItemGroup>
-		<ProjectReference Include="..\XLaunch\XLaunch.csproj" />
-		<ProjectReference Include="..\XLaunch.DataContracts\XLaunch.DataContracts.csproj" />
-	</ItemGroup>
 	<Import Project="..\XLaunch.Base\base.props" />
 </Project>

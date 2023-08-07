@@ -33,7 +33,7 @@
 		<PackageReference Include="Uno.Extensions.Serialization.Refit" />
 		<PackageReference Include="Uno.Material.WinUI" />
 		<PackageReference Include="Uno.Toolkit.WinUI.Material" />
-		<PackageReference Include="Uno.Extensions.Toolkit.WinUI"/>
+		<PackageReference Include="Uno.Extensions.Toolkit.WinUI" />
 		<PackageReference Include="Uno.Toolkit.WinUI" />
 		<PackageReference Include="Uno.Extensions.Hosting.WinUI" />
 		<PackageReference Include="Uno.Extensions.Localization.WinUI" />
@@ -61,9 +61,5 @@
 			</PropertyGroup>
 		</When>
 	</Choose>
-	<ItemGroup>
-		<ProjectReference Include="..\XLaunch\XLaunch.csproj" />
-		<ProjectReference Include="..\XLaunch.DataContracts\XLaunch.DataContracts.csproj" />
-	</ItemGroup>
 	<Import Project="..\XLaunch.Base\base.props" />
 </Project>
