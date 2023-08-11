@@ -1,70 +1,43 @@
 ﻿// See https://aka.ms/new-console-template for more information
-
 using Hi3Helper;
 using Hi3Helper.Shared.Region;
-using Squirrel;
-using System.Runtime.CompilerServices;
+using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Text;
 using WinRT;
+using static Hi3Helper.Locale;
 
 namespace Welcome;
 
 public partial class Launcher
 {
-    [UnmanagedCallConv(CallConvs = new[] { typeof(CallConvStdcall) })]
-    [LibraryImport("Microsoft.ui.xaml.dll", SetLastError = true, EntryPoint = "XamlCheckProcessRequirements")]
+    private Launcher()
+    {
+        ComWrappersSupport.InitializeComWrappers();
+    }
+
+    [LibraryImport("Microsoft.ui.xaml.dll")]
     private static partial void XamlCheckProcessRequirements();
 
     [STAThread]
     public static void Main(params string[] args)
     {
-#if PREVIEW
-        LauncherConfig.IsPreview = true;
-#endif
-        StartSquirrelHook();
-
+        LauncherConfig.InitAppPreset();
+        InitializeAppSettings();
+        XamlCheckProcessRequirements();
         Logger._log = new LoggerConsole("_logs", Encoding.UTF8);
-
-        Logger.LogWriteLine("test", LogType.Scheme, true);
-
-        if (!DecideRedirection())
+        Application.Start((p) =>
         {
-            XamlCheckProcessRequirements();
-            ComWrappersSupport.InitializeComWrappers();
-            Application.Start((p) =>
-            {
-                DispatcherQueueSynchronizationContext context = new DispatcherQueueSynchronizationContext(DispatcherQueue.GetForCurrentThread());
-                SynchronizationContext.SetSynchronizationContext(context);
-                _ = new App();
-            });
-        }
+            DispatcherQueueSynchronizationContext context = new DispatcherQueueSynchronizationContext(DispatcherQueue.GetForCurrentThread());
+            SynchronizationContext.SetSynchronizationContext(context);
+            _ = new App();
+        });
         return;
     }
 
-    private static bool DecideRedirection()
+    public static void InitializeAppSettings()
     {
-        return false;
-    }
-
-    private static void StartSquirrelHook()
-    {
-        // Add Squirrel Hooks
-        SquirrelAwareApp.HandleEvents(
-            /// Add shortcut and uninstaller entry on first start-up
-            onInitialInstall: (_, sqr) =>
-            {
-                Console.WriteLine("Please do not close this console window while CubeX is preparing the installation via Squirrel...");
-            },
-            onAppUpdate: (_, sqr) =>
-            {
-                Console.WriteLine("Please do not close this console window while CubeX is updating via Squirrel...");
-            },
-            onAppUninstall: (_, sqr) =>
-            {
-                Console.WriteLine("Uninstalling CubeX via Squirrel...\r\nPlease do not close this console window while action is being performed!");
-            },
-            onEveryRun: (_, _, _) => { }
-        );
+        InitializeLocale();
+        LoadLocale(CultureInfo.CurrentUICulture.Name);
     }
 }

@@ -1,8 +1,7 @@
 ﻿using System.Drawing;
 using static Hi3Helper.Shared.Region.LauncherConfig;
-using static XLauncher.InnerLauncherConfig;
 
-namespace XLauncher.WindowSize
+namespace Welcome
 {
     internal static class WindowSize
     {
@@ -42,7 +41,7 @@ namespace XLauncher.WindowSize
             }
         };
 
-        internal static string CurrentWindowSizeName
+        internal static string? CurrentWindowSizeName
         {
             get
             {
@@ -57,7 +56,6 @@ namespace XLauncher.WindowSize
             set
             {
                 SetAppConfigValue("WindowSizeProfile", value);
-                (m_window as MainWindow).SetWindowSize(m_windowHandle, CurrentWindowSize.WindowBounds.Width, CurrentWindowSize.WindowBounds.Height);
             }
         }
 

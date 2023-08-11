@@ -6,8 +6,8 @@
         {
             InitializeComponent();
 
-            new MainWindow()
-                .InitializeWindowProperties();
+            RequestedTheme = ApplicationTheme.Dark;
+            new MainWindow().InitializeWindow();
         }
     }
 }

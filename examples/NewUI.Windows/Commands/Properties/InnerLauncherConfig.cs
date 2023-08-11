@@ -4,15 +4,9 @@ using Hi3Helper.Preset;
 using Hi3Helper.Shared.ClassStruct;
 using Microsoft.UI.Text;
 using Microsoft.UI.Windowing;
-using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Text.Json;
-using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.UI;
 using static Hi3Helper.Logger;
@@ -69,8 +63,10 @@ namespace XLauncher
             {
                 case AppThemeMode.Light:
                     return ApplicationTheme.Light;
+
                 case AppThemeMode.Dark:
                     return ApplicationTheme.Dark;
+
                 default:
                     if (SystemAppTheme.ToString() == "#FFFFFFFF")
                         return ApplicationTheme.Light;

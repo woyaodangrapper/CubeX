@@ -17,7 +17,6 @@ using WinRT;
 using static Hi3Helper.Locale;
 using static Hi3Helper.Logger;
 using static Hi3Helper.Shared.Region.LauncherConfig;
-using static XLauncher.ArgumentParser;
 using static XLauncher.InnerLauncherConfig;
 
 namespace XLauncher;
@@ -57,7 +56,7 @@ public static partial class XLauncherProgram
             LogWriteLine(string.Format("Runtime: {0} - WindowsAppSDK {1}", RuntimeInformation.FrameworkDescription, winappSDKver.ProductVersion), LogType.Scheme, true);
 
             InitializeAppSettings();
-            ParseArguments(args);
+            ArgumentParser.ParseArguments(args);
 
             HttpLogInvoker.DownloadLog += HttpClientLogWatcher;
 

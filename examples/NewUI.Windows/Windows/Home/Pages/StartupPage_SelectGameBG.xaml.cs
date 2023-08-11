@@ -3,20 +3,15 @@ using Hi3Helper;
 using Hi3Helper.Http;
 using Hi3Helper.Preset;
 using Hi3Helper.Shared.ClassStruct;
-using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Imaging;
-using System;
 using System.Diagnostics;
 using System.Drawing;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
 using Windows.Storage.Streams;
-using static XLauncher.InnerLauncherConfig;
-using static XLauncher.Pages.StartupPage_SelectGameBGProp;
 using static Hi3Helper.Logger;
 using static Hi3Helper.Shared.Region.LauncherConfig;
+using static XLauncher.InnerLauncherConfig;
+using static XLauncher.Pages.StartupPage_SelectGameBGProp;
 
 namespace XLauncher.Pages
 {

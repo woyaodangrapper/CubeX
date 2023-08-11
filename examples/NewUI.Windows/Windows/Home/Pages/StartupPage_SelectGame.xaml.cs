@@ -1,12 +1,9 @@
-﻿using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
+﻿using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
-using System;
-using System.Threading.Tasks;
-using static XLauncher.InnerLauncherConfig;
-using static XLauncher.Pages.StartupPage_SelectGameBGProp;
 using static Hi3Helper.Preset.ConfigV2Store;
 using static Hi3Helper.Shared.Region.LauncherConfig;
+using static XLauncher.InnerLauncherConfig;
+using static XLauncher.Pages.StartupPage_SelectGameBGProp;
 
 namespace XLauncher.Pages
 {
@@ -39,6 +36,7 @@ namespace XLauncher.Pages
         }
 
         private string lastSelectedCategory = "";
+
         private async void GameSelect_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             object value = ((ComboBox)sender).SelectedValue;

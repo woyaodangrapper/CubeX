@@ -5,12 +5,9 @@
     xmlns:local="using:Welcome"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:winui="using:Microsoft.UI.Xaml"
     mc:Ignorable="d">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="48" />
-            <RowDefinition />
-        </Grid.RowDefinitions>
         <Frame x:Name="rootFrame" Grid.Row="0" Grid.RowSpan="2" Opacity="1" x:FieldModifier="public">
             <Frame.ContentTransitions>
                 <TransitionCollection>
@@ -28,7 +25,6 @@
         <Button x:Name="MinimizeButton" Width="48" Height="48"
                 Margin="0,0,48,0" HorizontalAlignment="Right"
                 Style="{StaticResource WindowCaptionButton}"
-                Click="MinimizeButton_Click"
                 Content="M 0 0 H 10" />
     </Grid>
 </Window>

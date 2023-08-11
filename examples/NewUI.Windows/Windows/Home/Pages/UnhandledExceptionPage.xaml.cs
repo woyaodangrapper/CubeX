@@ -1,8 +1,7 @@
-﻿using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
+﻿using Microsoft.UI.Xaml.Controls;
 using Windows.ApplicationModel.DataTransfer;
-using static XLauncher.InnerLauncherConfig;
 using static Hi3Helper.Locale;
+using static XLauncher.InnerLauncherConfig;
 
 namespace XLauncher.Pages
 {

@@ -1,20 +1,16 @@
 ﻿using Hi3Helper;
-using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Animation;
-using System;
-using System.IO;
 using System.Text;
-using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.UI;
-using static XLauncher.InnerLauncherConfig;
 using static Hi3Helper.Data.ConverterTool;
 using static Hi3Helper.FileDialogNative;
 using static Hi3Helper.Locale;
 using static Hi3Helper.Preset.ConfigV2Store;
 using static Hi3Helper.Shared.Region.LauncherConfig;
+using static XLauncher.InnerLauncherConfig;
 
 namespace XLauncher.Pages
 {
@@ -43,6 +39,7 @@ namespace XLauncher.Pages
                     SetAppConfigValue("GameFolder", AppGameFolder);
                     Selected = true;
                     break;
+
                 case ContentDialogResult.Secondary:
                     folder = await GetFolderPicker();
                     if (folder != null)

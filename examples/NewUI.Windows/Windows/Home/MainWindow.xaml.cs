@@ -4,7 +4,6 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Animation;
 using System.Drawing;
 using Windows.Graphics;
-using static Hi3Helper.FileDialogNative;
 using static Hi3Helper.InvokeProp;
 using static Hi3Helper.Logger;
 using static Hi3Helper.Shared.Region.LauncherConfig;
@@ -71,7 +70,7 @@ namespace XLauncher
             this.Activate();
             this.Closed += (_, _) => { App.IsAppKilled = true; };
             RunSetDragAreaQueue();
-            // Initialize Window Handlers
+            //Initialize Window Handlers
             m_windowHandle = GetActiveWindow();
             m_windowID = Win32Interop.GetWindowIdFromWindow(m_windowHandle);
             m_appWindow = AppWindow.GetFromWindowId(m_windowID);
@@ -96,7 +95,7 @@ namespace XLauncher
 
             m_appDPIScale = (uint)(((long)dpiX * 100 + (96 >> 1)) / 96) / 100.0;
 
-            InitHandlerPointer(m_windowHandle);
+            Hi3Helper.FileDialogNative.InitHandlerPointer(m_windowHandle);
         }
 
         private void LoadWindowIcon()
