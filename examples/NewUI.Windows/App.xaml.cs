@@ -14,7 +14,7 @@ namespace XLauncher
             try
             {
                 this.InitializeComponent();
-                RequestedTheme = CurrentRequestedAppTheme = GetAppTheme();
+                //RequestedTheme = CurrentRequestedAppTheme = GetAppTheme();
 
                 switch (m_appMode)
                 {

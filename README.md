@@ -4,6 +4,8 @@
   </a>
 </p>
 
+> I am very grateful to the [**Collapse**](https://github.com/neon-nyan/Collapse) repository for its excellent UI and overall architecture. I highly recommend it!
+
 **CubeX** is a forked design based on **Fluent Launcher**. I have redesigned and refactored the design and code for this project. The goal of this project is to serve as a game launcher for **Mojang's Minecraft**.
 
 <!-- PROJECT SHIELDS -->

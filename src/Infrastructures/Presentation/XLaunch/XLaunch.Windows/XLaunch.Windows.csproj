@@ -65,18 +65,13 @@
 		<FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" TargetingPackVersion="10.0.22621.28" /> -->
 	</ItemGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\XLaunch\XLaunch.csproj" />
-		<ProjectReference Include="..\XLaunch.DataContracts\XLaunch.DataContracts.csproj" />
-	</ItemGroup>
-
 	<!-- 
 		Defining the "Msix" ProjectCapability here allows the Single-project MSIX Packaging
 		Tools extension to be activated for this project even if the Windows App SDK Nuget
 		package has not yet been restored.
 	-->
 	<ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
-		<ProjectCapability Include="Msix"/>
+		<ProjectCapability Include="Msix" />
 	</ItemGroup>
 
 	<!-- 
