@@ -24,12 +24,12 @@
     "Pg2NextBtn": "Finish - Enter the Launcher",
     "Pg2PrevBtn": "Back - Select Folder",
     "Pg2Subtitle1_1": "Just one more step to play your game from",
-    "Pg2Subtitle1_2": "Collapse Launcher.",
+    "Pg2Subtitle1_2": "X Launcher.",
     "Pg2Subtitle1_3": "",
     "Pg2Subtitle2_1": "We have a few",
     "Pg2Subtitle2_2": "miHoYo/HoYoverse",
     "Pg2Subtitle2_3": "games that are supported. Please select your game below to start using",
-    "Pg2Subtitle2_4": "Collapse Launcher.",
+    "Pg2Subtitle2_4": "X Launcher.",
     "Pg2Subtitle2_5": "",
     "Pg2Title": "Time to fly~",
     "Subtitle1": "Hi!",
@@ -39,7 +39,7 @@
     "Subtitle4_2": "\"Locate folder\"",
     "Subtitle4_3": "button below to choose where you want to install your game.",
     "Title1": "Welcome",
-    "Title2": "to Collapse Launcher"
+    "Title2": "to X Launcher"
   },
 
   "_DisconnectedPage": {
@@ -474,7 +474,7 @@
     "DiscordRP_AppSettings": "Changing App Settings",
     "DiscordRP_Idle": "Idle",
     "DiscordRP_Default": "No Activity",
-    "DiscordRP_Ad": "- With Collapse Launcher",
+    "DiscordRP_Ad": "- With X Launcher",
     "DiscordRP_Region": "Region:"
   },
 
@@ -504,9 +504,9 @@
     "ExtremeGraphicsSettingsWarnTitle": "Very High Setting Preset Selected!",
     "ExtremeGraphicsSettingsWarnSubtitle": "You are about to set the setting preset to Very High!\r\nVery High setting preset is essentially a 2x Render Scale with MSAA Enabled and is VERY UNOPTIMIZED!\r\n\r\nAre you sure you want to use this setting?",
     "ExistingInstallTitle": "Existing Installation Detected!",
-    "ExistingInstallSubtitle": "Game has already been installed at:\r\n\r\n{0}\r\n\r\nIt is recommended to migrate the game to Collapse Launcher for better support and integration.\r\nRest assured, you can still use Official Launcher to start the game.\r\n\r\nDo you wish to proceed?",
+    "ExistingInstallSubtitle": "Game has already been installed at:\r\n\r\n{0}\r\n\r\nIt is recommended to migrate the game to X Launcher for better support and integration.\r\nRest assured, you can still use Official Launcher to start the game.\r\n\r\nDo you wish to proceed?",
     "ExistingInstallBHI3LTitle": "Existing Installation via BetterHI3Launcher Detected!",
-    "ExistingInstallBHI3LSubtitle": "Game has already been installed at:\r\n\r\n{0}\r\n\r\nIt is recommended to migrate the game to Collapse Launcher for better support and integration.\r\nRest assured, you can still use BetterHi3Launcher to start the game.\r\n\r\nDo you wish to proceed?",
+    "ExistingInstallBHI3LSubtitle": "Game has already been installed at:\r\n\r\n{0}\r\n\r\nIt is recommended to migrate the game to X Launcher for better support and integration.\r\nRest assured, you can still use BetterHi3Launcher to start the game.\r\n\r\nDo you wish to proceed?",
     "ExistingInstallSteamTitle": "Existing Installation via Steam Detected!",
     "ExistingInstallSteamSubtitle": "Game has already been installed on Steam at:\r\n\r\n{0}\r\n\r\nDo you wish to convert this version to the Non-Steam Global version?\nNote: Once you initiate the conversion, you can no longer log-in with your Steam account. Only the miHoYo/HoYoverse account login method will be available.\r\n\r\nDo you wish to proceed with the conversion and migration?",
     "SteamConvertNeedMigrateTitle": "Folder Migration Required",

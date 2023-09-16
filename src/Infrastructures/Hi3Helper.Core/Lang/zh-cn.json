@@ -23,7 +23,7 @@
     "Pg2NextBtn": "完成 - 进入启动器",
     "Pg2PrevBtn": "返回 - 选择文件夹",
     "Pg2Subtitle1_1": "只需最后一步即可在",
-    "Pg2Subtitle1_2": "Collapse Launcher.",
+    "Pg2Subtitle1_2": "X Launcher.",
     "Pg2Subtitle1_3": "",
     "Pg2Subtitle2_1": "我们目前支持一些",
     "Pg2Subtitle2_2": "miHoYo/HoYoverse",
@@ -38,7 +38,7 @@
     "Subtitle4_2": "\"选择文件夹\"",
     "Subtitle4_3": "按钮来选择你要安装游戏的地方。",
     "Title1": "欢迎来到",
-    "Title2": "Collapse Launcher"
+    "Title2": "X Launcher"
   },
   "_DisconnectedPage": {
     "PageTitle": "断开链接",
