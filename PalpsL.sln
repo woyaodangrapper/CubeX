@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{E134A9F5-CBCB-4FE5-A45C-93E604598740}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{158BE5B9-2E8B-4604-B726-54D33EC820EF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructures", "Infrastructures", "{F5607917-A8EE-427D-AC50-AD74F4999B17}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PalpsL.Windows", "src\windows\PalpsL.Windows\PalpsL.Windows.csproj", "{3BD68593-BF64-4BDF-9104-3B58B49142B5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Publish|x64 = Publish|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3BD68593-BF64-4BDF-9104-3B58B49142B5}.Debug|x64.ActiveCfg = Debug|x64
+		{3BD68593-BF64-4BDF-9104-3B58B49142B5}.Debug|x64.Build.0 = Debug|x64
+		{3BD68593-BF64-4BDF-9104-3B58B49142B5}.Publish|x64.ActiveCfg = Publish|x64
+		{3BD68593-BF64-4BDF-9104-3B58B49142B5}.Publish|x64.Build.0 = Publish|x64
+		{3BD68593-BF64-4BDF-9104-3B58B49142B5}.Release|x64.ActiveCfg = Release|x64
+		{3BD68593-BF64-4BDF-9104-3B58B49142B5}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F5607917-A8EE-427D-AC50-AD74F4999B17} = {158BE5B9-2E8B-4604-B726-54D33EC820EF}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E3534CAC-D2B9-451F-8CC2-65D27FF81671}
+	EndGlobalSection
+EndGlobal

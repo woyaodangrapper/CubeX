@@ -4,9 +4,9 @@
   </a>
 </p>
 
-> 版权声明： 此 [**背景图**](http://www.ngchina.com.cn/news/detail?newsId=48814) 由中国地理摄影栏目拍摄，使用本图仅作为软件背景图，不用于地图软件相关功能，也不作为软件的Logo或徽标。未经授权，禁止分发或修改本图。如有侵权，请与我司联系。本软件仅作非盈利用途。
+> 版权声明： 此 [**背景图**](http://www.ngchina.com.cn/news/detail?newsId=48814) 由中国地理摄影栏目拍摄，使用本图仅作为软件背景图，不用于地图软件相关功能，也不作为软件的Logo或徽标。未经授权，禁止分发或修改本图。如有侵权，请与我联系，本软件仅作非盈利用途。
 
-**软件名称：脉冲我的世界启动器** 是基于[**Collapse**](http://www.ngchina.com.cn/news/detail?newsId=48814)和[**Natsurainko.FluentLauncher**](https://github.com/Xcube-Studio/Natsurainko.FluentLauncher)的 分叉设计 。我已经重新设计和重构了这个项目的设计和代码。这个项目的目标是作为**Mojang's Minecraft**的游戏启动器。
+**软件名称：脉冲我的世界启动器** 是基于 [**Collapse**](https://github.com/neon-nyan/Collapse) 和 [**Natsurainko.FluentLauncher**](https://github.com/Xcube-Studio/Natsurainko.FluentLauncher) 的 分叉设计 。我已经重新设计和重构了这个项目的设计和代码。这个项目的目标是作为 **Mojang's Minecraft** 的游戏启动器。
 
 <!-- PROJECT SHIELDS -->
 
